@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learniverse: Fun Learning for Kids</title>
     
-    <!-- Google Fonts: Poppins & Baloo 2 for a playful look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ==============================================
-        Branding & Theme
-        ============================================== */
         :root {
             --primary-color: #4A90E2;
             --secondary-color: #F5A623;
@@ -29,11 +24,7 @@
             --font-display: 'Baloo 2', cursive;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-main);
@@ -42,32 +33,14 @@
             overflow: hidden;
         }
 
-        /* Utility Classes */
-        .hidden {
-            display: none !important;
-        }
-
-        /* ==============================================
-        Splash Screen
-        ============================================== */
         #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
             z-index: 1000;
             transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
         }
-        #splash-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
+        #splash-screen.fade-out { opacity: 0; visibility: hidden; }
         .logo-container { animation: popIn 1s ease-out forwards; }
         #splash-logo { width: 150px; height: 150px; }
         @keyframes popIn {
@@ -76,92 +49,47 @@
             100% { transform: scale(1); opacity: 1; }
         }
         .splash-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--white-color);
-            margin-top: 20px;
-            animation: fadeIn 1.5s ease-in forwards;
-            opacity: 0;
-            animation-delay: 0.5s;
+            font-family: var(--font-display); font-size: 2.5rem; font-weight: 700;
+            color: var(--white-color); margin-top: 20px;
+            animation: fadeIn 1.5s ease-in forwards; opacity: 0; animation-delay: 0.5s;
         }
         @keyframes fadeIn { to { opacity: 1; } }
 
-        /* ==============================================
-        Page Transitions
-        ============================================== */
         .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.95);
+            position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh;
+            padding: 20px; display: flex; flex-direction: column;
+            opacity: 0; visibility: hidden; transform: scale(0.95);
             transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
         }
-        .page.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
+        .page.visible { opacity: 1; visibility: visible; transform: scale(1); }
 
-        /* ==============================================
-        App Header (Used on multiple pages)
-        ============================================== */
         .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            flex-shrink: 0;
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 20px; flex-shrink: 0;
         }
         .app-title {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
             color: var(--primary-color);
         }
         .header-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            cursor: pointer;
-            padding: 5px;
+            background: none; border: none; font-size: 1.5rem;
+            color: var(--text-color); cursor: pointer; padding: 5px;
         }
 
-        /* ==============================================
-        Homepage
-        ============================================== */
         .main-menu {
-            flex-grow: 1;
-            display: grid;
+            flex-grow: 1; display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
+            gap: 20px; padding: 20px 0;
         }
         .menu-card {
-            background-color: var(--white-color);
-            border-radius: 20px;
+            background-color: var(--white-color); border-radius: 20px;
             box-shadow: 0 10px 20px var(--shadow-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px; text-align: center; cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: var(--text-color);
+            text-decoration: none; color: var(--text-color);
         }
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
         .menu-card .icon { font-size: 3rem; margin-bottom: 15px; }
         #english-card .icon { color: var(--primary-color); }
         #urdu-card .icon { color: var(--secondary-color); }
@@ -169,84 +97,74 @@
         #math-card .icon { color: #E94B3C; }
         .menu-card h3 { font-size: 1.2rem; font-weight: 600; }
         .menu-card p { font-size: 0.8rem; color: #777; }
-        .app-footer { text-align: center; padding-top: 20px; }
+        .app-footer { text-align: center; padding-top: 20px; flex-shrink: 0; }
         .reward-btn {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+            background-color: var(--secondary-color); color: var(--white-color); border: none;
+            padding: 10px 20px; border-radius: 50px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
         }
 
-        /* ==============================================
-        English Learning Section
-        ============================================== */
-        #english-section { background-color: #e3f2fd; }
         .alphabet-display {
-            background: var(--white-color);
-            border-radius: 25px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px var(--shadow-color);
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            background: var(--white-color); border-radius: 25px; padding: 20px;
+            margin-bottom: 20px; box-shadow: 0 10px 20px var(--shadow-color);
+            text-align: center; flex-grow: 1; display: flex; flex-direction: column;
             justify-content: center;
         }
         .letter-image { font-size: 6rem; line-height: 1; }
-        .letter-text {
-            font-family: var(--font-display);
-            font-size: 5rem;
-            color: var(--primary-color);
-            line-height: 1;
-        }
-        .word-text {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
+        .letter-text { font-family: var(--font-display); font-size: 5rem; line-height: 1; }
+        .word-text { font-size: 2rem; font-weight: 600; margin-top: 10px; }
+
+        #english-section { background-color: #e3f2fd; }
+        #english-section .letter-text { color: var(--primary-color); }
+
+        #urdu-section { background-color: #fff9e6; }
+        #urdu-section .letter-text, #urdu-section .word-text { font-family: 'Noto Nastaliq Urdu', serif; }
+        #urdu-section .letter-text { color: var(--secondary-color); }
+
+        #arabic-section { background-color: #e6fcf5; }
+        #arabic-section .letter-text, #arabic-section .word-text { font-family: 'Noto Naskh Arabic', serif; }
+        #arabic-section .letter-text { color: var(--accent-color); }
+
         .alphabet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+            gap: 10px; margin-bottom: 20px;
         }
         .letter-btn {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            background-color: var(--white-color);
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            padding: 10px 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: var(--font-display); font-size: 1.5rem; background-color: var(--white-color);
+            border: 2px solid; border-radius: 10px; padding: 10px 5px;
+            cursor: pointer; transition: background-color 0.3s, color 0.3s;
         }
-        .letter-btn.active {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
+        #english-section .letter-btn { color: var(--primary-color); border-color: var(--primary-color); }
+        #english-section .letter-btn.active { background-color: var(--primary-color); color: var(--white-color); }
+        #urdu-section .letter-btn { color: var(--secondary-color); border-color: var(--secondary-color); font-size: 2rem; }
+        #urdu-section .letter-btn.active { background-color: var(--secondary-color); color: var(--white-color); }
+        #arabic-section .letter-btn { color: var(--accent-color); border-color: var(--accent-color); font-size: 2rem; }
+        #arabic-section .letter-btn.active { background-color: var(--accent-color); color: var(--white-color); }
+
+        .nav-buttons { display: flex; justify-content: space-between; flex-shrink: 0; }
         .nav-btn {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            border: none;
-            border-radius: 15px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+            background-color: var(--secondary-color); color: var(--white-color); border: none;
+            border-radius: 15px; padding: 15px 30px; font-size: 1.2rem; font-weight: 600;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
         }
 
+        #math-section { background-color: #ffebee; }
+        .math-puzzle {
+            flex-grow: 1; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center;
+        }
+        .problem-text { font-size: 4rem; font-weight: 700; color: #E94B3C; }
+        .answer-input {
+            font-size: 2rem; width: 150px; text-align: center; border: 2px solid #E94B3C;
+            border-radius: 15px; padding: 10px; margin: 20px 0;
+        }
+        .check-btn {
+            background-color: #E94B3C; color: var(--white-color);
+            padding: 15px 40px; font-size: 1.2rem;
+        }
+        .feedback { font-size: 1.5rem; margin-top: 20px; font-weight: 600; height: 30px; }
+        .feedback.correct { color: green; }
+        .feedback.incorrect { color: red; }
     </style>
 </head>
 <body>
@@ -254,180 +172,250 @@
     <div id="splash-screen">
         <div class="logo-container">
             <svg id="splash-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="45" fill="#4A90E2"/>
-                <path d="M25,55 Q50,70 75,55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <circle cx="35" cy="45" r="5" fill="white"/>
-                <circle cx="65" cy="45" r="5" fill="white"/>
-                <path d="M20,40 L50,20 L80,40 L50,30 Z" fill="#333"/>
-                <rect x="48" y="12" width="4" height="8" fill="#F5A623"/>
+                <circle cx="50" cy="50" r="48" fill="#FFFFFF"/>
+                <path d="M30,70 Q50,85 70,70" stroke="#4A90E2" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <circle cx="38" cy="50" r="7" fill="#4A90E2"/>
+                <circle cx="62" cy="50" r="7" fill="#4A90E2"/>
+                <path d="M25,40 L50,20 L75,40 L50,30 Z" fill="#F5A623"/>
+                <rect x="48" y="12" width="4" height="8" fill="#50E3C2"/>
             </svg>
         </div>
         <h1 class="splash-text">Learniverse</h1>
     </div>
 
-    <!-- Homepage -->
     <main id="app-homepage" class="page">
-        <header class="app-header">
-            <h1 class="app-title">Welcome!</h1>
-            <button class="header-btn" onclick="playSound('click')" aria-label="Settings"><i class="fas fa-cog"></i></button>
-        </header>
+        <header class="app-header"><h1 class="app-title">Welcome!</h1><button class="header-btn" aria-label="Settings"><i class="fas fa-cog"></i></button></header>
         <section class="main-menu">
-            <a href="#" id="english-card" class="menu-card" onclick="showPage('english-section')">
-                <div class="icon"><i class="fas fa-font"></i></div>
-                <h3>English ABC</h3><p>Learn letters & words</p>
-            </a>
-            <a href="#" id="urdu-card" class="menu-card" onclick="alert('Urdu section coming soon!')">
-                <div class="icon"><i class="fas fa-feather-alt"></i></div>
-                <h3>Urdu Qaida</h3><p>Explore Urdu alphabet</p>
-            </a>
-            <a href="#" id="arabic-card" class="menu-card" onclick="alert('Arabic section coming soon!')">
-                <div class="icon"><i class="fas fa-moon"></i></div>
-                <h3>Arabic Qaida</h3><p>Read the holy script</p>
-            </a>
-            <a href="#" id="math-card" class="menu-card" onclick="alert('Math section coming soon!')">
-                <div class="icon"><i class="fas fa-calculator"></i></div>
-                <h3>Math Puzzles</h3><p>Fun with numbers</p>
-            </a>
+            <a href="#" id="english-card" class="menu-card" onclick="showPage('english-section')"><div class="icon"><i class="fas fa-font"></i></div><h3>English ABC</h3><p>Learn letters & words</p></a>
+            <a href="#" id="urdu-card" class="menu-card" onclick="showPage('urdu-section')"><div class="icon"><i class="fas fa-feather-alt"></i></div><h3>Urdu Qaida</h3><p>Explore Urdu alphabet</p></a>
+            <a href="#" id="arabic-card" class="menu-card" onclick="showPage('arabic-section')"><div class="icon"><i class="fas fa-moon"></i></div><h3>Arabic Qaida</h3><p>Read the holy script</p></a>
+            <a href="#" id="math-card" class="menu-card" onclick="showPage('math-section')"><div class="icon"><i class="fas fa-calculator"></i></div><h3>Math Puzzles</h3><p>Fun with numbers</p></a>
         </section>
-        <footer class="app-footer">
-            <button class="reward-btn" onclick="playSound('click')"><i class="fas fa-star"></i> My Rewards</button>
-        </footer>
+        <footer class="app-footer"><button class="reward-btn"><i class="fas fa-star"></i> My Rewards</button></footer>
     </main>
 
-    <!-- English Learning Section -->
+    <!-- English Section -->
     <section id="english-section" class="page">
         <header class="app-header">
-            <button class="header-btn" onclick="showPage('app-homepage')" aria-label="Back to home">
-                <i class="fas fa-arrow-left"></i>
-            </button>
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
             <h1 class="app-title">English ABC</h1>
-            <button class="header-btn" onclick="playCurrentLetterSound()" aria-label="Play Sound">
-                <i class="fas fa-volume-up"></i>
-            </button>
+            <button class="header-btn" onclick="speakCurrentLetter('english')"><i class="fas fa-volume-up"></i></button>
         </header>
-        
-        <div class="alphabet-display">
-            <div id="letter-image" class="letter-image">🍎</div>
-            <div id="letter-text" class="letter-text">Aa</div>
-            <div id="word-text" class="word-text">Apple</div>
-        </div>
-
-        <div id="alphabet-grid" class="alphabet-grid">
-            <!-- Letter buttons will be generated by JavaScript -->
-        </div>
-
+        <div class="alphabet-display"><div id="english-letter-image" class="letter-image"></div><div id="english-letter-text" class="letter-text"></div><div id="english-word-text" class="word-text"></div></div>
+        <div id="english-alphabet-grid" class="alphabet-grid"></div>
         <div class="nav-buttons">
-            <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
-            <button id="next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+            <button id="english-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="english-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Urdu Section -->
+    <section id="urdu-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="app-title" style="color: var(--secondary-color);">Urdu Qaida</h1>
+            <button class="header-btn" onclick="speakCurrentLetter('urdu')"><i class="fas fa-volume-up"></i></button>
+        </header>
+        <div class="alphabet-display"><div id="urdu-letter-image" class="letter-image"></div><div id="urdu-letter-text" class="letter-text"></div><div id="urdu-word-text" class="word-text"></div></div>
+        <div id="urdu-alphabet-grid" class="alphabet-grid"></div>
+        <div class="nav-buttons">
+            <button id="urdu-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="urdu-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Arabic Section -->
+    <section id="arabic-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="app-title" style="color: var(--accent-color);">Arabic Qaida</h1>
+            <button class="header-btn" onclick="speakCurrentLetter('arabic')"><i class="fas fa-volume-up"></i></button>
+        </header>
+        <div class="alphabet-display"><div id="arabic-letter-image" class="letter-image"></div><div id="arabic-letter-text" class="letter-text"></div><div id="arabic-word-text" class="word-text"></div></div>
+        <div id="arabic-alphabet-grid" class="alphabet-grid"></div>
+        <div class="nav-buttons">
+            <button id="arabic-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="arabic-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Math Section -->
+    <section id="math-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="app-title" style="color: #E94B3C;">Math Puzzles</h1>
+            <div style="width: 40px;"></div>
+        </header>
+        <div class="math-puzzle">
+            <div id="problem-text" class="problem-text"></div>
+            <input type="number" id="answer-input" class="answer-input" placeholder="?">
+            <button id="check-answer-btn" class="nav-btn check-btn">Check</button>
+            <div id="feedback-text" class="feedback"></div>
         </div>
     </section>
 
     <script>
         // --- App State & Data ---
-        let currentPage = 'app-homepage';
-        let currentAlphabetIndex = 0;
-        const alphabetData = [
-            { letter: 'A', word: 'Apple', image: '🍎', sound: 'a_for_apple.mp3' },
-            { letter: 'B', word: 'Ball', image: '⚽', sound: 'b_for_ball.mp3' },
-            { letter: 'C', word: 'Cat', image: '🐱', sound: 'c_for_cat.mp3' },
-            { letter: 'D', word: 'Dog', image: '🐶', sound: 'd_for_dog.mp3' },
-            { letter: 'E', word: 'Elephant', image: '🐘', sound: 'e_for_elephant.mp3' },
-            { letter: 'F', word: 'Fish', image: '🐟', sound: 'f_for_fish.mp3' },
-            { letter: 'G', word: 'Goat', image: '🐐', sound: 'g_for_goat.mp3' },
-            { letter: 'H', word: 'Hat', image: '👒', sound: 'h_for_hat.mp3' },
-            { letter: 'I', word: 'Ice Cream', image: '🍦', sound: 'i_for_ice_cream.mp3' },
-            { letter: 'J', word: 'Juice', image: '🧃', sound: 'j_for_juice.mp3' },
-            { letter: 'K', word: 'Kite', image: '🪁', sound: 'k_for_kite.mp3' },
-            { letter: 'L', word: 'Lion', image: '🦁', sound: 'l_for_lion.mp3' },
-            { letter: 'M', word: 'Monkey', image: '🐵', sound: 'm_for_monkey.mp3' },
-            { letter: 'N', word: 'Nest', image: '🪺', sound: 'n_for_nest.mp3' },
-            { letter: 'O', word: 'Orange', image: '🍊', sound: 'o_for_orange.mp3' },
-            { letter: 'P', word: 'Panda', image: '🐼', sound: 'p_for_panda.mp3' },
-            { letter: 'Q', word: 'Queen', image: '👑', sound: 'q_for_queen.mp3' },
-            { letter: 'R', word: 'Rabbit', image: '🐰', sound: 'r_for_rabbit.mp3' },
-            { letter: 'S', word: 'Sun', image: '☀️', sound: 's_for_sun.mp3' },
-            { letter: 'T', word: 'Tiger', image: '🐯', sound: 't_for_tiger.mp3' },
-            { letter: 'U', word: 'Umbrella', image: '☂️', sound: 'u_for_umbrella.mp3' },
-            { letter: 'V', word: 'Violin', image: '🎻', sound: 'v_for_violin.mp3' },
-            { letter: 'W', word: 'Watch', image: '⌚', sound: 'w_for_watch.mp3' },
-            { letter: 'X', word: 'Xylophone', image: ' xylophone', sound: 'x_for_xylophone.mp3' },
-            { letter: 'Y', word: 'Yacht', image: '⛵', sound: 'y_for_yacht.mp3' },
-            { letter: 'Z', word: 'Zebra', image: '🦓', sound: 'z_for_zebra.mp3' },
-        ];
+        const state = {
+            currentPage: 'app-homepage',
+            english: { currentIndex: 0 },
+            urdu: { currentIndex: 0 },
+            arabic: { currentIndex: 0 },
+            math: { currentProblem: null, score: 0 }
+        };
 
-        // --- Audio Context ---
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        function playSound(type) {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            if (type === 'click') {
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+        const data = {
+            english: [
+                { letter: 'A', word: 'Apple', image: '🍎' }, { letter: 'B', word: 'Ball', image: '⚽' },
+                { letter: 'C', word: 'Cat', image: '🐱' }, { letter: 'D', word: 'Dog', image: '🐶' },
+                { letter: 'E', word: 'Elephant', image: '🐘' }, { letter: 'F', word: 'Fish', image: '🐟' },
+                { letter: 'G', word: 'Goat', image: '🐐' }, { letter: 'H', word: 'Hat', image: '👒' },
+                { letter: 'I', word: 'Ice Cream', image: '🍦' }, { letter: 'J', word: 'Juice', image: '🧃' },
+                { letter: 'K', word: 'Kite', image: '🪁' }, { letter: 'L', word: 'Lion', image: '🦁' },
+                { letter: 'M', word: 'Monkey', image: '🐵' }, { letter: 'N', word: 'Nest', image: '🪺' },
+                { letter: 'O', word: 'Orange', image: '🍊' }, { letter: 'P', word: 'Panda', image: '🐼' },
+                { letter: 'Q', word: 'Queen', image: '👑' }, { letter: 'R', word: 'Rabbit', image: '🐰' },
+                { letter: 'S', word: 'Sun', image: '☀️' }, { letter: 'T', word: 'Tiger', image: '🐯' },
+                { letter: 'U', word: 'Umbrella', image: '☂️' }, { letter: 'V', word: 'Violin', image: '🎻' },
+                { letter: 'W', word: 'Watch', image: '⌚' }, { letter: 'X', word: 'Xylophone', image: '🥁' },
+                { letter: 'Y', word: 'Yacht', image: '⛵' }, { letter: 'Z', word: 'Zebra', image: '🦓' },
+            ],
+            urdu: [
+                { letter: 'ا', word: 'انار', image: '🍇' }, { letter: 'ب', word: 'بلی', image: '🐈' },
+                { letter: 'پ', word: 'پتنگ', image: '🪁' }, { letter: 'ت', word: 'تتلی', image: '🦋' },
+                { letter: 'ٹ', word: 'ٹوپی', image: '🧢' }, { letter: 'ث', word: 'ثمر', image: '🍓' },
+                { letter: 'ج', word: 'جہاز', image: '✈️' }, { letter: 'چ', word: 'چڑیا', image: '🐦' },
+                { letter: 'ح', word: 'حلوہ', image: '🍮' }, { letter: 'خ', word: 'خرگوش', image: '🐇' },
+                { letter: 'د', word: 'درخت', image: '🌳' }, { letter: 'ڈ', word: 'ڈول', image: '🥁' },
+                { letter: 'ذ', word: 'ذخیرہ', image: '📦' }, { letter: 'ر', word: 'ریل', image: '🚂' },
+                { letter: 'ڑ', word: 'پہاڑ', image: '⛰️' }, { letter: 'ز', word: 'زرافہ', image: '🦒' },
+                { letter: 'ژ', word: 'ژالہ', image: '❄️' }, { letter: 'س', word: 'سیب', image: '🍎' },
+                { letter: 'ش', word: 'شیر', image: '🦁' }, { letter: 'ص', word: 'صوفہ', image: '🛋️' },
+                { letter: 'ض', word: 'ضعیف', image: '👴' }, { letter: 'ط', word: 'طوطا', image: '🦜' },
+                { letter: 'ظ', word: 'ظروف', image: '🍽️' }, { letter: 'ع', word: 'عینک', image: '👓' },
+                { letter: 'غ', word: 'غبارہ', image: '🎈' }, { letter: 'ف', word: 'فوارہ', image: '⛲' },
+                { letter: 'ق', word: 'قینچی', image: '✂️' }, { letter: 'ک', word: 'کتاب', image: '📚' },
+                { letter: 'گ', word: 'گاجر', image: '🥕' }, { letter: 'ل', word: 'لیموں', image: '🍋' },
+                { letter: 'م', word: 'مچھلی', image: '🐠' }, { letter: 'ن', word: 'ناریل', image: '🥥' },
+                { letter: 'و', word: 'ورزش', image: '🏋️' }, { letter: 'ہ', word: 'ہاتھی', image: '🐘' },
+                { letter: 'ی', word: 'یکہ', image: '🐴' },
+            ],
+            arabic: [
+                { letter: 'أ', word: 'أسد', image: '🦁' }, { letter: 'ب', word: 'بطة', image: '🦆' },
+                { letter: 'ت', word: 'تفاح', image: '🍎' }, { letter: 'ث', word: 'ثعلب', image: '🦊' },
+                { letter: 'ج', word: 'جمل', image: '🐪' }, { letter: 'ح', word: 'حصان', image: '🐴' },
+                { letter: 'خ', word: 'خروف', image: '🐑' }, { letter: 'د', word: 'ديك', image: '🐓' },
+                { letter: 'ذ', word: 'ذئب', image: '🐺' }, { letter: 'ر', word: 'رمان', image: '🍇' },
+                { letter: 'ز', word: 'زرافة', image: '🦒' }, { letter: 'س', word: 'سمكة', image: '🐟' },
+                { letter: 'ش', word: 'شمس', image: '☀️' }, { letter: 'ص', word: 'صاروخ', image: '🚀' },
+                { letter: 'ض', word: 'ضفدع', image: '🐸' }, { letter: 'ط', word: 'طائرة', image: '✈️' },
+                { letter: 'ظ', word: 'ظبي', image: '🦌' }, { letter: 'ع', word: 'عنب', image: '🍇' },
+                { letter: 'غ', word: 'غزال', image: '🦌' }, { letter: 'ف', word: 'فيل', image: '🐘' },
+                { letter: 'ق', word: 'قمر', image: '🌙' }, { letter: 'ك', word: 'كلب', image: '🐕' },
+                { letter: 'ل', word: 'ليمون', image: '🍋' }, { letter: 'م', word: 'موز', image: '🍌' },
+                { letter: 'ن', word: 'نجمة', image: '⭐' }, { letter: 'ه', word: 'هدهد', image: '🐦' },
+                { letter: 'و', word: 'وردة', image: '🌹' }, { letter: 'ي', word: 'يد', image: '✋' },
+            ]
+        };
+
+        // --- Speech Synthesis ---
+        const synth = window.speechSynthesis;
+        function speak(text, lang) {
+            if (synth.speaking) {
+                synth.cancel();
             }
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.1);
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            synth.speak(utterance);
         }
-        
+
+        function speakCurrentLetter(lang) {
+            const item = data[lang][state[lang].currentIndex];
+            const textToSpeak = `${item.letter}, ${item.word}`;
+            const langCode = { english: 'en-US', urdu: 'ur-PK', arabic: 'ar-SA' }[lang];
+            speak(textToSpeak, langCode);
+        }
+
         // --- Page Navigation ---
         function showPage(pageId) {
-            playSound('click');
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('visible');
-            });
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
             document.getElementById(pageId).classList.add('visible');
-            currentPage = pageId;
+            state.currentPage = pageId;
+            if (pageId === 'math-section') generateMathProblem();
         }
 
-        // --- English Section Logic ---
-        const letterImageEl = document.getElementById('letter-image');
-        const letterTextEl = document.getElementById('letter-text');
-        const wordTextEl = document.getElementById('word-text');
-        const alphabetGridEl = document.getElementById('alphabet-grid');
-
-        function updateAlphabetDisplay(index) {
-            const item = alphabetData[index];
-            letterImageEl.textContent = item.image;
-            letterTextEl.textContent = `${item.letter}${item.letter.toLowerCase()}`;
-            wordTextEl.textContent = item.word;
-            currentAlphabetIndex = index;
-
-            // Update active button in the grid
-            document.querySelectorAll('.letter-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', i === index);
-            });
-        }
-
-        function playCurrentLetterSound() {
-            // Placeholder for female voice narration
-            const soundFile = alphabetData[currentAlphabetIndex].sound;
-            console.log(`Playing sound: ${soundFile}`);
-            // In a real app, you would use the Web Audio API to play the actual file.
-            alert(`Playing sound for "${alphabetData[currentAlphabetIndex].word}"`);
-        }
-
-        function generateAlphabetGrid() {
-            alphabetData.forEach((item, index) => {
+        // --- Generic Alphabet Section Logic ---
+        function setupAlphabetSection(lang) {
+            const grid = document.getElementById(`${lang}-alphabet-grid`);
+            grid.innerHTML = '';
+            data[lang].forEach((item, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'letter-btn';
                 btn.textContent = item.letter;
-                btn.onclick = () => {
-                    playSound('click');
-                    updateAlphabetDisplay(index);
-                };
-                alphabetGridEl.appendChild(btn);
+                btn.onclick = () => updateAlphabetDisplay(lang, index);
+                grid.appendChild(btn);
             });
+
+            document.getElementById(`${lang}-prev-btn`).onclick = () => {
+                const newIndex = (state[lang].currentIndex - 1 + data[lang].length) % data[lang].length;
+                updateAlphabetDisplay(lang, newIndex);
+            };
+            document.getElementById(`${lang}-next-btn`).onclick = () => {
+                const newIndex = (state[lang].currentIndex + 1) % data[lang].length;
+                updateAlphabetDisplay(lang, newIndex);
+            };
+        }
+
+        function updateAlphabetDisplay(lang, index) {
+            state[lang].currentIndex = index;
+            const item = data[lang][index];
+            document.getElementById(`${lang}-letter-image`).textContent = item.image;
+            const letterText = lang === 'english' ? `${item.letter}${item.letter.toLowerCase()}` : item.letter;
+            document.getElementById(`${lang}-letter-text`).textContent = letterText;
+            document.getElementById(`${lang}-word-text`).textContent = item.word;
+            
+            document.querySelectorAll(`#${lang}-alphabet-grid .letter-btn`).forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            speakCurrentLetter(lang);
+        }
+
+        // --- Math Section Logic ---
+        function generateMathProblem() {
+            const num1 = Math.floor(Math.random() * 50) + 1;
+            const num2 = Math.floor(Math.random() * 50) + 1;
+            const isAddition = Math.random() > 0.5;
+            
+            if (isAddition) {
+                state.math.currentProblem = { num1, num2, operator: '+', answer: num1 + num2 };
+            } else {
+                // Ensure the result is not negative
+                const max = Math.max(num1, num2);
+                const min = Math.min(num1, num2);
+                state.math.currentProblem = { num1: max, num2: min, operator: '-', answer: max - min };
+            }
+            
+            document.getElementById('problem-text').textContent = `${state.math.currentProblem.num1} ${state.math.currentProblem.operator} ${state.math.currentProblem.num2}`;
+            document.getElementById('answer-input').value = '';
+            document.getElementById('feedback-text').textContent = '';
+        }
+
+        function checkMathAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer-input').value);
+            const feedbackEl = document.getElementById('feedback-text');
+            if (userAnswer === state.math.currentProblem.answer) {
+                feedbackEl.textContent = 'Correct! 🎉';
+                feedbackEl.className = 'feedback correct';
+                setTimeout(generateMathProblem, 1500);
+            } else {
+                feedbackEl.textContent = 'Try again!';
+                feedbackEl.className = 'feedback incorrect';
+            }
         }
 
         // --- App Initialization ---
         window.addEventListener('load', () => {
             const splashScreen = document.getElementById('splash-screen');
-
-            // --- AdMob Placeholder ---
-            console.log("AD_MOB: Preparing App Open Ad...");
-
             setTimeout(() => {
                 splashScreen.classList.add('fade-out');
                 setTimeout(() => {
@@ -435,23 +423,17 @@
                     showPage('app-homepage');
                     document.body.style.overflow = 'auto';
                 }, 1000);
-            }, 3000);
+            }, 2000);
 
-            // Initialize English Section
-            generateAlphabetGrid();
-            updateAlphabetDisplay(0);
-
-            // Event Listeners for Nav Buttons
-            document.getElementById('prev-btn').addEventListener('click', () => {
-                playSound('click');
-                const newIndex = (currentAlphabetIndex - 1 + alphabetData.length) % alphabetData.length;
-                updateAlphabetDisplay(newIndex);
-            });
-            document.getElementById('next-btn').addEventListener('click', () => {
-                playSound('click');
-                const newIndex = (currentAlphabetIndex + 1) % alphabetData.length;
-                updateAlphabetDisplay(newIndex);
-            });
+            setupAlphabetSection('english');
+            setupAlphabetSection('urdu');
+            setupAlphabetSection('arabic');
+            
+            updateAlphabetDisplay('english', 0);
+            updateAlphabetDisplay('urdu', 0);
+            updateAlphabetDisplay('arabic', 0);
+            
+            document.getElementById('check-answer-btn').onclick = checkMathAnswer;
         });
     </script>
 
