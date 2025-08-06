@@ -18,7 +18,6 @@
             --accent-color: #50E3C2;
             --math-color: #E94B3C;
             --poems-color: #9B59B6;
-            --preview-color: #3498DB;
             --background-color: #F9F9F9;
             --text-color: #333333;
             --white-color: #FFFFFF;
@@ -65,8 +64,6 @@
             transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
         }
         .page.visible { opacity: 1; visibility: visible; transform: scale(1); }
-        .page-content-wrapper { flex-grow: 1; overflow-y: auto; }
-
 
         .app-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -122,7 +119,6 @@
         #arabic-card { background-image: url('https://images.unsplash.com/photo-1601051582238-1a52458c5457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YXJhYmljLGNhbGxpZ3JhcGh5LGlzbGFtaWN8fHx8fHwxNjk5NTYzNTM0&ixlib=rb-4.0.3&q=80&w=1080'); }
         #math-card { background-image: url('https://images.unsplash.com/photo-1509428333589-db18b1153120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bnVtYmVycyxjaGlsZHJlbnx8fHx8fDE2OTk1NjM2MTE&ixlib=rb-4.0.3&q=80&w=1080'); }
         #poems-card { background-image: url('https://images.unsplash.com/photo-1510546020469-9b2b8e359998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9lbSxyaHltZSxraWR8fHx8fHwxNzI0NzE4NDI0&ixlib=rb-4.0.3&q=80&w=1080'); }
-        #preview-card { background-image: url('https://images.unsplash.com/photo-1578363490836-33a7ce045292?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cHJldmlldyxleWV8fHx8fHwxNzI0NzE5NzAy&ixlib=rb-4.0.3&q=80&w=1080'); }
 
         .app-footer { text-align: center; padding-top: 20px; flex-shrink: 0; }
         .reward-btn {
@@ -210,72 +206,6 @@
         .feedback { font-size: 1.5rem; margin-top: 20px; font-weight: 600; height: 30px; }
         .feedback.correct { color: green; }
         .feedback.incorrect { color: red; }
-        
-        /* --- Preview Section Styles --- */
-        #preview-section { background-color: #eaf2f8; }
-        .preview-category {
-            background-color: var(--white-color);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-        .preview-category h4 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
-        .preview-category h4 .fa-font { color: var(--primary-color); }
-        .preview-category h4 .fa-feather-alt { color: var(--secondary-color); }
-        .preview-category h4 .fa-moon { color: var(--accent-color); }
-        .preview-category h4 .fa-music { color: var(--poems-color); }
-        .preview-category h4 .fa-calculator { color: var(--math-color); }
-
-        .preview-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .preview-item {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            color: var(--white-color);
-            font-weight: 700;
-        }
-        .preview-item.english { background-color: var(--primary-color); }
-        .preview-item.urdu { background-color: var(--secondary-color); font-size: 2.5rem; font-family: 'Noto Nastaliq Urdu', serif;}
-        .preview-item.arabic { background-color: var(--accent-color); font-size: 2.5rem; font-family: 'Noto Naskh Arabic', serif;}
-        .preview-item.math-problem {
-            background-color: var(--math-color);
-            width: auto;
-            padding: 10px 20px;
-            font-size: 1.8rem;
-        }
-        .preview-list {
-            list-style: none;
-            padding-left: 10px;
-        }
-        .preview-list li {
-            padding: 8px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .preview-list li::before {
-            content: "🎵";
-            margin-right: 10px;
-        }
-        .preview-list li:last-child {
-            border-bottom: none;
-        }
-
     </style>
 </head>
 <body>
@@ -302,7 +232,6 @@
             <a href="#" id="arabic-card" class="menu-card" onclick="showPage('arabic-section')"><h3>Arabic Qaida</h3><p>Read the holy script</p></a>
             <a href="#" id="poems-card" class="menu-card" onclick="showPage('poems-section')"><h3>Poems & Rhymes</h3><p>Sing along to classics</p></a>
             <a href="#" id="math-card" class="menu-card" onclick="showPage('math-section')"><h3>Math Puzzles</h3><p>Fun with numbers</p></a>
-            <a href="#" id="preview-card" class="menu-card" onclick="showPage('preview-section')"><h3>App Preview</h3><p>See all we offer!</p></a>
         </section>
         <footer class="app-footer"><button class="reward-btn"><i class="fas fa-star"></i> My Rewards</button></footer>
     </main>
@@ -313,10 +242,8 @@
             <h1 class="app-title">English ABC</h1>
             <button class="header-btn" onclick="speakCurrentLetter('english')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="page-content-wrapper">
-            <div class="alphabet-display"><div id="english-letter-image" class="letter-image"></div><div id="english-letter-text" class="letter-text"></div><div id="english-word-text" class="word-text"></div></div>
-            <div id="english-alphabet-grid" class="alphabet-grid"></div>
-        </div>
+        <div class="alphabet-display"><div id="english-letter-image" class="letter-image"></div><div id="english-letter-text" class="letter-text"></div><div id="english-word-text" class="word-text"></div></div>
+        <div id="english-alphabet-grid" class="alphabet-grid"></div>
         <div class="nav-buttons">
             <button id="english-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="english-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
@@ -329,10 +256,8 @@
             <h1 class="app-title" style="color: var(--secondary-color);">Urdu Qaida</h1>
             <button class="header-btn" onclick="speakCurrentLetter('urdu')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="page-content-wrapper">
-            <div class="alphabet-display"><div id="urdu-letter-image" class="letter-image"></div><div id="urdu-letter-text" class="letter-text"></div><div id="urdu-word-text" class="word-text"></div></div>
-            <div id="urdu-alphabet-grid" class="alphabet-grid"></div>
-        </div>
+        <div class="alphabet-display"><div id="urdu-letter-image" class="letter-image"></div><div id="urdu-letter-text" class="letter-text"></div><div id="urdu-word-text" class="word-text"></div></div>
+        <div id="urdu-alphabet-grid" class="alphabet-grid"></div>
         <div class="nav-buttons">
             <button id="urdu-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="urdu-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
@@ -345,10 +270,8 @@
             <h1 class="app-title" style="color: var(--accent-color);">Arabic Qaida</h1>
             <button class="header-btn" onclick="speakCurrentLetter('arabic')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="page-content-wrapper">
-            <div class="alphabet-display"><div id="arabic-letter-image" class="letter-image"></div><div id="arabic-letter-text" class="letter-text"></div><div id="arabic-word-text" class="word-text"></div></div>
-            <div id="arabic-alphabet-grid" class="alphabet-grid"></div>
-        </div>
+        <div class="alphabet-display"><div id="arabic-letter-image" class="letter-image"></div><div id="arabic-letter-text" class="letter-text"></div><div id="arabic-word-text" class="word-text"></div></div>
+        <div id="arabic-alphabet-grid" class="alphabet-grid"></div>
         <div class="nav-buttons">
             <button id="arabic-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="arabic-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
@@ -361,13 +284,11 @@
             <h1 class="app-title">Poems & Rhymes</h1>
             <button class="header-btn" onclick="speakCurrentPoem()"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="page-content-wrapper">
-            <div id="poem-display">
-                <h2 id="poem-title"></h2>
-                <pre id="poem-content"></pre>
-            </div>
-            <div id="poems-grid" class="alphabet-grid"></div>
+        <div id="poem-display">
+            <h2 id="poem-title"></h2>
+            <pre id="poem-content"></pre>
         </div>
+        <div id="poems-grid" class="alphabet-grid"></div>
         <div class="nav-buttons">
             <button id="poems-prev-btn" class="nav-btn" style="background-color: var(--poems-color);"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="poems-next-btn" class="nav-btn" style="background-color: var(--poems-color);">Next <i class="fas fa-chevron-right"></i></button>
@@ -385,61 +306,6 @@
             <input type="number" id="answer-input" class="answer-input" placeholder="?">
             <button id="check-answer-btn" class="nav-btn check-btn">Check</button>
             <div id="feedback-text" class="feedback"></div>
-        </div>
-    </section>
-    
-    <section id="preview-section" class="page">
-        <header class="app-header">
-            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
-            <h1 class="app-title" style="color: var(--preview-color);">App Preview</h1>
-            <div style="width: 40px;"></div> </header>
-        <div class="page-content-wrapper">
-            <div class="preview-category">
-                <h4><i class="fas fa-font"></i> English ABC</h4>
-                <div class="preview-grid">
-                    <div class="preview-item english">A</div>
-                    <div class="preview-item english">B</div>
-                    <div class="preview-item english">C</div>
-                    <div class="preview-item english">D</div>
-                    <div class="preview-item english">E</div>
-                </div>
-            </div>
-            <div class="preview-category">
-                <h4><i class="fas fa-feather-alt"></i> Urdu Qaida</h4>
-                <div class="preview-grid">
-                    <div class="preview-item urdu">ا</div>
-                    <div class="preview-item urdu">ب</div>
-                    <div class="preview-item urdu">پ</div>
-                    <div class="preview-item urdu">ت</div>
-                    <div class="preview-item urdu">ٹ</div>
-                </div>
-            </div>
-            <div class="preview-category">
-                <h4><i class="fas fa-moon"></i> Arabic Qaida</h4>
-                <div class="preview-grid">
-                    <div class="preview-item arabic">أ</div>
-                    <div class="preview-item arabic">ب</div>
-                    <div class="preview-item arabic">ت</div>
-                    <div class="preview-item arabic">ث</div>
-                    <div class="preview-item arabic">ج</div>
-                </div>
-            </div>
-            <div class="preview-category">
-                <h4><i class="fas fa-music"></i> Poems & Rhymes</h4>
-                <ul class="preview-list">
-                    <li>Twinkle, Twinkle</li>
-                    <li>Humpty Dumpty</li>
-                    <li>The Wheels on the Bus</li>
-                </ul>
-            </div>
-            <div class="preview-category">
-                <h4><i class="fas fa-calculator"></i> Math Puzzles</h4>
-                <div class="preview-grid">
-                    <div class="preview-item math-problem">
-                        <span>12 + 8 = ?</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
