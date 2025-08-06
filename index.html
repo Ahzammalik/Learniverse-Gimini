@@ -16,6 +16,9 @@
             --primary-color: #4A90E2;
             --secondary-color: #F5A623;
             --accent-color: #50E3C2;
+            --math-color: #E94B3C;
+            --poems-color: #9B59B6;
+            --preview-color: #3498DB;
             --background-color: #F9F9F9;
             --text-color: #333333;
             --white-color: #FFFFFF;
@@ -62,6 +65,8 @@
             transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
         }
         .page.visible { opacity: 1; visibility: visible; transform: scale(1); }
+        .page-content-wrapper { flex-grow: 1; overflow-y: auto; }
+
 
         .app-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -76,27 +81,49 @@
             color: var(--text-color); cursor: pointer; padding: 5px;
         }
 
+        /* --- Attractive Homepage Styles --- */
         .main-menu {
             flex-grow: 1; display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px; padding: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Larger cards */
+            gap: 25px; padding: 20px 0;
         }
         .menu-card {
             background-color: var(--white-color); border-radius: 20px;
             box-shadow: 0 10px 20px var(--shadow-color);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 20px; text-align: center; cursor: pointer;
+            display: flex; flex-direction: column; justify-content: flex-end; /* Align text to bottom */
+            padding: 25px; text-align: left; cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none; color: var(--text-color);
+            text-decoration: none; color: var(--white-color);
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
-        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
-        .menu-card .icon { font-size: 3rem; margin-bottom: 15px; }
-        #english-card .icon { color: var(--primary-color); }
-        #urdu-card .icon { color: var(--secondary-color); }
-        #arabic-card .icon { color: var(--accent-color); }
-        #math-card .icon { color: #E94B3C; }
-        .menu-card h3 { font-size: 1.2rem; font-weight: 600; }
-        .menu-card p { font-size: 0.8rem; color: #777; }
+        .menu-card::before { /* Image overlay */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+            z-index: 1;
+        }
+        .menu-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
+        .menu-card h3, .menu-card p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .menu-card h3 { font-size: 1.5rem; font-weight: 700; font-family: var(--font-display); }
+        .menu-card p { font-size: 0.9rem; }
+        
+        /* NOTE: Replace these placeholder image URLs with your own high-quality images */
+        #english-card { background-image: url('https://images.unsplash.com/photo-1543465077-db45d34b88a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YWxwaGFiZXQsYmxvY2tzfHx8fHx8MTY5OTU2MzMxOA&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #urdu-card { background-image: url('https://images.unsplash.com/photo-1582993841392-1e9508b53434?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8dXJkdSx3cml0aW5nfHx8fHx8MTY5OTU2MzQ1Mw&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #arabic-card { background-image: url('https://images.unsplash.com/photo-1601051582238-1a52458c5457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YXJhYmljLGNhbGxpZ3JhcGh5LGlzbGFtaWN8fHx8fHwxNjk5NTYzNTM0&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #math-card { background-image: url('https://images.unsplash.com/photo-1509428333589-db18b1153120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bnVtYmVycyxjaGlsZHJlbnx8fHx8fDE2OTk1NjM2MTE&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #poems-card { background-image: url('https://images.unsplash.com/photo-1510546020469-9b2b8e359998?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9lbSxyaHltZSxraWR8fHx8fHwxNzI0NzE4NDI0&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #preview-card { background-image: url('https://images.unsplash.com/photo-1578363490836-33a7ce045292?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cHJldmlldyxleWV8fHx8fHwxNzI0NzE5NzAy&ixlib=rb-4.0.3&q=80&w=1080'); }
+
         .app-footer { text-align: center; padding-top: 20px; flex-shrink: 0; }
         .reward-btn {
             background-color: var(--secondary-color); color: var(--white-color); border: none;
@@ -116,36 +143,57 @@
 
         #english-section { background-color: #e3f2fd; }
         #english-section .letter-text { color: var(--primary-color); }
+        #english-section .letter-btn { color: var(--primary-color); border-color: var(--primary-color); }
+        #english-section .letter-btn.active { background-color: var(--primary-color); color: var(--white-color); }
 
         #urdu-section { background-color: #fff9e6; }
         #urdu-section .letter-text, #urdu-section .word-text { font-family: 'Noto Nastaliq Urdu', serif; }
         #urdu-section .letter-text { color: var(--secondary-color); }
+        #urdu-section .letter-btn { color: var(--secondary-color); border-color: var(--secondary-color); font-size: 2rem; }
+        #urdu-section .letter-btn.active { background-color: var(--secondary-color); color: var(--white-color); }
 
         #arabic-section { background-color: #e6fcf5; }
         #arabic-section .letter-text, #arabic-section .word-text { font-family: 'Noto Naskh Arabic', serif; }
         #arabic-section .letter-text { color: var(--accent-color); }
+        #arabic-section .letter-btn { color: var(--accent-color); border-color: var(--accent-color); font-size: 2rem; }
+        #arabic-section .letter-btn.active { background-color: var(--accent-color); color: var(--white-color); }
+
+        /* --- Poem Section Styles --- */
+        #poems-section { background-color: #f3e5f5; }
+        #poems-section .app-title { color: var(--poems-color); }
+        #poem-display {
+            background: var(--white-color); border-radius: 25px; padding: 25px;
+            margin-bottom: 20px; box-shadow: 0 10px 20px var(--shadow-color);
+            flex-grow: 1; display: flex; flex-direction: column;
+            justify-content: center; text-align: center;
+        }
+        #poem-title { font-family: var(--font-display); font-size: 2.2rem; color: var(--poems-color); margin-bottom: 15px; }
+        #poem-content { font-size: 1.2rem; line-height: 1.8; color: var(--text-color); white-space: pre-wrap; }
+        #poems-grid .poem-title-btn {
+            font-family: var(--font-main); font-size: 0.9rem; background-color: var(--white-color);
+            border: 2px solid var(--poems-color); color: var(--poems-color); border-radius: 10px;
+            padding: 10px 5px; cursor: pointer; transition: background-color 0.3s, color 0.3s;
+            text-align: center; font-weight: 600;
+        }
+        #poems-grid .poem-title-btn.active { background-color: var(--poems-color); color: var(--white-color); }
 
         .alphabet-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-            gap: 10px; margin-bottom: 20px;
+            gap: 10px; margin-bottom: 20px; max-height: 25vh; overflow-y: auto;
         }
+        #poems-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+
         .letter-btn {
             font-family: var(--font-display); font-size: 1.5rem; background-color: var(--white-color);
             border: 2px solid; border-radius: 10px; padding: 10px 5px;
             cursor: pointer; transition: background-color 0.3s, color 0.3s;
         }
-        #english-section .letter-btn { color: var(--primary-color); border-color: var(--primary-color); }
-        #english-section .letter-btn.active { background-color: var(--primary-color); color: var(--white-color); }
-        #urdu-section .letter-btn { color: var(--secondary-color); border-color: var(--secondary-color); font-size: 2rem; }
-        #urdu-section .letter-btn.active { background-color: var(--secondary-color); color: var(--white-color); }
-        #arabic-section .letter-btn { color: var(--accent-color); border-color: var(--accent-color); font-size: 2rem; }
-        #arabic-section .letter-btn.active { background-color: var(--accent-color); color: var(--white-color); }
 
         .nav-buttons { display: flex; justify-content: space-between; flex-shrink: 0; }
         .nav-btn {
             background-color: var(--secondary-color); color: var(--white-color); border: none;
             border-radius: 15px; padding: 15px 30px; font-size: 1.2rem; font-weight: 600;
-            cursor: pointer; box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         #math-section { background-color: #ffebee; }
@@ -153,18 +201,81 @@
             flex-grow: 1; display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center;
         }
-        .problem-text { font-size: 4rem; font-weight: 700; color: #E94B3C; }
+        .problem-text { font-size: 4rem; font-weight: 700; color: var(--math-color); }
         .answer-input {
-            font-size: 2rem; width: 150px; text-align: center; border: 2px solid #E94B3C;
+            font-size: 2rem; width: 150px; text-align: center; border: 2px solid var(--math-color);
             border-radius: 15px; padding: 10px; margin: 20px 0;
         }
-        .check-btn {
-            background-color: #E94B3C; color: var(--white-color);
-            padding: 15px 40px; font-size: 1.2rem;
-        }
+        .check-btn { background-color: var(--math-color); }
         .feedback { font-size: 1.5rem; margin-top: 20px; font-weight: 600; height: 30px; }
         .feedback.correct { color: green; }
         .feedback.incorrect { color: red; }
+        
+        /* --- Preview Section Styles --- */
+        #preview-section { background-color: #eaf2f8; }
+        .preview-category {
+            background-color: var(--white-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        .preview-category h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .preview-category h4 .fa-font { color: var(--primary-color); }
+        .preview-category h4 .fa-feather-alt { color: var(--secondary-color); }
+        .preview-category h4 .fa-moon { color: var(--accent-color); }
+        .preview-category h4 .fa-music { color: var(--poems-color); }
+        .preview-category h4 .fa-calculator { color: var(--math-color); }
+
+        .preview-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .preview-item {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: var(--white-color);
+            font-weight: 700;
+        }
+        .preview-item.english { background-color: var(--primary-color); }
+        .preview-item.urdu { background-color: var(--secondary-color); font-size: 2.5rem; font-family: 'Noto Nastaliq Urdu', serif;}
+        .preview-item.arabic { background-color: var(--accent-color); font-size: 2.5rem; font-family: 'Noto Naskh Arabic', serif;}
+        .preview-item.math-problem {
+            background-color: var(--math-color);
+            width: auto;
+            padding: 10px 20px;
+            font-size: 1.8rem;
+        }
+        .preview-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+        .preview-list li {
+            padding: 8px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .preview-list li::before {
+            content: "🎵";
+            margin-right: 10px;
+        }
+        .preview-list li:last-child {
+            border-bottom: none;
+        }
+
     </style>
 </head>
 <body>
@@ -186,71 +297,149 @@
     <main id="app-homepage" class="page">
         <header class="app-header"><h1 class="app-title">Welcome!</h1><button class="header-btn" aria-label="Settings"><i class="fas fa-cog"></i></button></header>
         <section class="main-menu">
-            <a href="#" id="english-card" class="menu-card" onclick="showPage('english-section')"><div class="icon"><i class="fas fa-font"></i></div><h3>English ABC</h3><p>Learn letters & words</p></a>
-            <a href="#" id="urdu-card" class="menu-card" onclick="showPage('urdu-section')"><div class="icon"><i class="fas fa-feather-alt"></i></div><h3>Urdu Qaida</h3><p>Explore Urdu alphabet</p></a>
-            <a href="#" id="arabic-card" class="menu-card" onclick="showPage('arabic-section')"><div class="icon"><i class="fas fa-moon"></i></div><h3>Arabic Qaida</h3><p>Read the holy script</p></a>
-            <a href="#" id="math-card" class="menu-card" onclick="showPage('math-section')"><div class="icon"><i class="fas fa-calculator"></i></div><h3>Math Puzzles</h3><p>Fun with numbers</p></a>
+            <a href="#" id="english-card" class="menu-card" onclick="showPage('english-section')"><h3>English ABC</h3><p>Learn letters & words</p></a>
+            <a href="#" id="urdu-card" class="menu-card" onclick="showPage('urdu-section')"><h3>Urdu Qaida</h3><p>Explore Urdu alphabet</p></a>
+            <a href="#" id="arabic-card" class="menu-card" onclick="showPage('arabic-section')"><h3>Arabic Qaida</h3><p>Read the holy script</p></a>
+            <a href="#" id="poems-card" class="menu-card" onclick="showPage('poems-section')"><h3>Poems & Rhymes</h3><p>Sing along to classics</p></a>
+            <a href="#" id="math-card" class="menu-card" onclick="showPage('math-section')"><h3>Math Puzzles</h3><p>Fun with numbers</p></a>
+            <a href="#" id="preview-card" class="menu-card" onclick="showPage('preview-section')"><h3>App Preview</h3><p>See all we offer!</p></a>
         </section>
         <footer class="app-footer"><button class="reward-btn"><i class="fas fa-star"></i> My Rewards</button></footer>
     </main>
 
-    <!-- English Section -->
     <section id="english-section" class="page">
         <header class="app-header">
             <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
             <h1 class="app-title">English ABC</h1>
             <button class="header-btn" onclick="speakCurrentLetter('english')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="alphabet-display"><div id="english-letter-image" class="letter-image"></div><div id="english-letter-text" class="letter-text"></div><div id="english-word-text" class="word-text"></div></div>
-        <div id="english-alphabet-grid" class="alphabet-grid"></div>
+        <div class="page-content-wrapper">
+            <div class="alphabet-display"><div id="english-letter-image" class="letter-image"></div><div id="english-letter-text" class="letter-text"></div><div id="english-word-text" class="word-text"></div></div>
+            <div id="english-alphabet-grid" class="alphabet-grid"></div>
+        </div>
         <div class="nav-buttons">
             <button id="english-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="english-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <!-- Urdu Section -->
     <section id="urdu-section" class="page">
         <header class="app-header">
             <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
             <h1 class="app-title" style="color: var(--secondary-color);">Urdu Qaida</h1>
             <button class="header-btn" onclick="speakCurrentLetter('urdu')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="alphabet-display"><div id="urdu-letter-image" class="letter-image"></div><div id="urdu-letter-text" class="letter-text"></div><div id="urdu-word-text" class="word-text"></div></div>
-        <div id="urdu-alphabet-grid" class="alphabet-grid"></div>
+        <div class="page-content-wrapper">
+            <div class="alphabet-display"><div id="urdu-letter-image" class="letter-image"></div><div id="urdu-letter-text" class="letter-text"></div><div id="urdu-word-text" class="word-text"></div></div>
+            <div id="urdu-alphabet-grid" class="alphabet-grid"></div>
+        </div>
         <div class="nav-buttons">
             <button id="urdu-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="urdu-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <!-- Arabic Section -->
     <section id="arabic-section" class="page">
         <header class="app-header">
             <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
             <h1 class="app-title" style="color: var(--accent-color);">Arabic Qaida</h1>
             <button class="header-btn" onclick="speakCurrentLetter('arabic')"><i class="fas fa-volume-up"></i></button>
         </header>
-        <div class="alphabet-display"><div id="arabic-letter-image" class="letter-image"></div><div id="arabic-letter-text" class="letter-text"></div><div id="arabic-word-text" class="word-text"></div></div>
-        <div id="arabic-alphabet-grid" class="alphabet-grid"></div>
+        <div class="page-content-wrapper">
+            <div class="alphabet-display"><div id="arabic-letter-image" class="letter-image"></div><div id="arabic-letter-text" class="letter-text"></div><div id="arabic-word-text" class="word-text"></div></div>
+            <div id="arabic-alphabet-grid" class="alphabet-grid"></div>
+        </div>
         <div class="nav-buttons">
             <button id="arabic-prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
             <button id="arabic-next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
+    
+    <section id="poems-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="app-title">Poems & Rhymes</h1>
+            <button class="header-btn" onclick="speakCurrentPoem()"><i class="fas fa-volume-up"></i></button>
+        </header>
+        <div class="page-content-wrapper">
+            <div id="poem-display">
+                <h2 id="poem-title"></h2>
+                <pre id="poem-content"></pre>
+            </div>
+            <div id="poems-grid" class="alphabet-grid"></div>
+        </div>
+        <div class="nav-buttons">
+            <button id="poems-prev-btn" class="nav-btn" style="background-color: var(--poems-color);"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="poems-next-btn" class="nav-btn" style="background-color: var(--poems-color);">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
 
-    <!-- Math Section -->
     <section id="math-section" class="page">
         <header class="app-header">
             <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
-            <h1 class="app-title" style="color: #E94B3C;">Math Puzzles</h1>
-            <div style="width: 40px;"></div>
+            <h1 class="app-title" style="color: var(--math-color);">Math Puzzles</h1>
+            <button class="header-btn" onclick="speakMathProblem()"><i class="fas fa-volume-up"></i></button>
         </header>
         <div class="math-puzzle">
             <div id="problem-text" class="problem-text"></div>
             <input type="number" id="answer-input" class="answer-input" placeholder="?">
             <button id="check-answer-btn" class="nav-btn check-btn">Check</button>
             <div id="feedback-text" class="feedback"></div>
+        </div>
+    </section>
+    
+    <section id="preview-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')"><i class="fas fa-arrow-left"></i></button>
+            <h1 class="app-title" style="color: var(--preview-color);">App Preview</h1>
+            <div style="width: 40px;"></div> </header>
+        <div class="page-content-wrapper">
+            <div class="preview-category">
+                <h4><i class="fas fa-font"></i> English ABC</h4>
+                <div class="preview-grid">
+                    <div class="preview-item english">A</div>
+                    <div class="preview-item english">B</div>
+                    <div class="preview-item english">C</div>
+                    <div class="preview-item english">D</div>
+                    <div class="preview-item english">E</div>
+                </div>
+            </div>
+            <div class="preview-category">
+                <h4><i class="fas fa-feather-alt"></i> Urdu Qaida</h4>
+                <div class="preview-grid">
+                    <div class="preview-item urdu">ا</div>
+                    <div class="preview-item urdu">ب</div>
+                    <div class="preview-item urdu">پ</div>
+                    <div class="preview-item urdu">ت</div>
+                    <div class="preview-item urdu">ٹ</div>
+                </div>
+            </div>
+            <div class="preview-category">
+                <h4><i class="fas fa-moon"></i> Arabic Qaida</h4>
+                <div class="preview-grid">
+                    <div class="preview-item arabic">أ</div>
+                    <div class="preview-item arabic">ب</div>
+                    <div class="preview-item arabic">ت</div>
+                    <div class="preview-item arabic">ث</div>
+                    <div class="preview-item arabic">ج</div>
+                </div>
+            </div>
+            <div class="preview-category">
+                <h4><i class="fas fa-music"></i> Poems & Rhymes</h4>
+                <ul class="preview-list">
+                    <li>Twinkle, Twinkle</li>
+                    <li>Humpty Dumpty</li>
+                    <li>The Wheels on the Bus</li>
+                </ul>
+            </div>
+            <div class="preview-category">
+                <h4><i class="fas fa-calculator"></i> Math Puzzles</h4>
+                <div class="preview-grid">
+                    <div class="preview-item math-problem">
+                        <span>12 + 8 = ?</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -261,6 +450,7 @@
             english: { currentIndex: 0 },
             urdu: { currentIndex: 0 },
             arabic: { currentIndex: 0 },
+            poems: { currentIndex: 0 },
             math: { currentProblem: null, score: 0 }
         };
 
@@ -315,6 +505,28 @@
                 { letter: 'ل', word: 'ليمون', image: '🍋' }, { letter: 'م', word: 'موز', image: '🍌' },
                 { letter: 'ن', word: 'نجمة', image: '⭐' }, { letter: 'ه', word: 'هدهد', image: '🐦' },
                 { letter: 'و', word: 'وردة', image: '🌹' }, { letter: 'ي', word: 'يد', image: '✋' },
+            ],
+            poems: [
+                { title: "Twinkle, Twinkle", text: "Twinkle, twinkle, little star,\nHow I wonder what you are!\nUp above the world so high,\nLike a diamond in the sky." },
+                { title: "Baa, Baa, Black Sheep", text: "Baa, baa, black sheep,\nHave you any wool?\nYes, sir, yes, sir,\nThree bags full." },
+                { title: "Humpty Dumpty", text: "Humpty Dumpty sat on a wall,\nHumpty Dumpty had a great fall.\nAll the king's horses and all the king's men\nCouldn't put Humpty together again." },
+                { title: "Jack and Jill", text: "Jack and Jill went up the hill\nTo fetch a pail of water.\nJack fell down and broke his crown,\nAnd Jill came tumbling after." },
+                { title: "Mary Had a Little Lamb", text: "Mary had a little lamb,\nIts fleece was white as snow.\nAnd everywhere that Mary went,\nThe lamb was sure to go." },
+                { title: "Little Miss Muffet", text: "Little Miss Muffet\nSat on a tuffet,\nEating her curds and whey;\nAlong came a spider,\nWho sat down beside her\nAnd frightened Miss Muffet away." },
+                { title: "Hey Diddle Diddle", text: "Hey diddle diddle,\nThe cat and the fiddle,\nThe cow jumped over the moon;\nThe little dog laughed\nTo see such a sport,\nAnd the dish ran away with the spoon." },
+                { title: "Itsy Bitsy Spider", text: "The itsy bitsy spider\nClimbed up the waterspout.\nDown came the rain\nAnd washed the spider out." },
+                { title: "Row Your Boat", text: "Row, row, row your boat,\nGently down the stream.\nMerrily, merrily, merrily, merrily,\nLife is but a dream." },
+                { title: "The Wheels on the Bus", text: "The wheels on the bus go round and round,\nRound and round, round and round.\nThe wheels on the bus go round and round,\nAll through the town." },
+                { title: "Old MacDonald", text: "Old MacDonald had a farm,\nE-I-E-I-O.\nAnd on his farm he had a cow,\nE-I-E-I-O." },
+                { title: "Hickory Dickory Dock", text: "Hickory dickory dock,\nThe mouse ran up the clock.\nThe clock struck one,\nThe mouse ran down,\nHickory dickory dock." },
+                { title: "One, Two, Buckle My Shoe", text: "One, two,\nBuckle my shoe;\nThree, four,\nKnock at the door;\nFive, six,\nPick up sticks." },
+                { title: "Pat-a-cake", text: "Pat-a-cake, pat-a-cake, baker's man,\nBake me a cake as fast as you can.\nPat it and prick it, and mark it with B,\nAnd put it in the oven for Baby and me." },
+                { title: "Rain, Rain, Go Away", text: "Rain, rain, go away,\nCome again another day.\nLittle Johnny wants to play,\nRain, rain, go away." },
+                { title: "Star Light, Star Bright", text: "Star light, star bright,\nFirst star I see tonight;\nI wish I may, I wish I might,\nHave the wish I wish tonight." },
+                { title: "Ring a Ring o' Roses", text: "Ring-a-ring o' roses,\nA pocket full of posies,\nA-tishoo! A-tishoo!\nWe all fall down." },
+                { title: "Teddy Bear, Teddy Bear", text: "Teddy Bear, Teddy Bear, turn around,\nTeddy Bear, Teddy Bear, touch the ground,\nTeddy Bear, Teddy Bear, show your shoe,\nTeddy Bear, Teddy Bear, that will do." },
+                { title: "Five Little Monkeys", text: "Five little monkeys jumping on the bed,\nOne fell off and bumped his head.\nMama called the doctor and the doctor said,\n'No more monkeys jumping on the bed!'" },
+                { title: "Johny Johny Yes Papa", text: "Johny, Johny?\nYes, Papa?\nEating sugar?\nNo, Papa.\nTelling lies?\nNo, Papa.\nOpen your mouth.\nHa! Ha! Ha!" }
             ]
         };
 
@@ -325,7 +537,9 @@
                 synth.cancel();
             }
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = lang;
+            if (lang) {
+                utterance.lang = lang;
+            }
             synth.speak(utterance);
         }
 
@@ -335,13 +549,27 @@
             const langCode = { english: 'en-US', urdu: 'ur-PK', arabic: 'ar-SA' }[lang];
             speak(textToSpeak, langCode);
         }
+        
+        function speakCurrentPoem() {
+            const poem = data.poems[state.poems.currentIndex];
+            const textToSpeak = `${poem.title}. ${poem.text}`;
+            speak(textToSpeak, 'en-US');
+        }
+
+        function speakMathProblem() {
+            const problem = state.math.currentProblem;
+            if (!problem) return;
+            const operatorText = problem.operator === '+' ? 'plus' : 'minus';
+            const textToSpeak = `What is ${problem.num1} ${operatorText} ${problem.num2}?`;
+            speak(textToSpeak, 'en-US');
+        }
 
         // --- Page Navigation ---
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
             document.getElementById(pageId).classList.add('visible');
             state.currentPage = pageId;
-            if (pageId === 'math-section') generateMathProblem();
+            if (pageId === 'math-section' && !state.math.currentProblem) generateMathProblem();
         }
 
         // --- Generic Alphabet Section Logic ---
@@ -366,7 +594,7 @@
             };
         }
 
-        function updateAlphabetDisplay(lang, index) {
+        function updateAlphabetDisplay(lang, index, autoSpeak = true) {
             state[lang].currentIndex = index;
             const item = data[lang][index];
             document.getElementById(`${lang}-letter-image`).textContent = item.image;
@@ -377,19 +605,56 @@
             document.querySelectorAll(`#${lang}-alphabet-grid .letter-btn`).forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
             });
-            speakCurrentLetter(lang);
+            if(autoSpeak) {
+                speakCurrentLetter(lang);
+            }
+        }
+        
+        // --- Poems Section Logic ---
+        function setupPoemsSection() {
+            const grid = document.getElementById('poems-grid');
+            grid.innerHTML = '';
+            data.poems.forEach((poem, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'poem-title-btn';
+                btn.textContent = poem.title;
+                btn.onclick = () => updatePoemDisplay(index);
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('poems-prev-btn').onclick = () => {
+                const newIndex = (state.poems.currentIndex - 1 + data.poems.length) % data.poems.length;
+                updatePoemDisplay(newIndex);
+            };
+            document.getElementById('poems-next-btn').onclick = () => {
+                const newIndex = (state.poems.currentIndex + 1) % data.poems.length;
+                updatePoemDisplay(newIndex);
+            };
+        }
+
+        function updatePoemDisplay(index, autoSpeak = true) {
+            state.poems.currentIndex = index;
+            const poem = data.poems[index];
+            document.getElementById('poem-title').textContent = poem.title;
+            document.getElementById('poem-content').textContent = poem.text;
+            
+            document.querySelectorAll('#poems-grid .poem-title-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            if (autoSpeak) {
+               speakCurrentPoem();
+            }
         }
 
         // --- Math Section Logic ---
         function generateMathProblem() {
-            const num1 = Math.floor(Math.random() * 50) + 1;
-            const num2 = Math.floor(Math.random() * 50) + 1;
+            const num1 = Math.floor(Math.random() * 20) + 1;
+            const num2 = Math.floor(Math.random() * 20) + 1;
             const isAddition = Math.random() > 0.5;
             
             if (isAddition) {
                 state.math.currentProblem = { num1, num2, operator: '+', answer: num1 + num2 };
             } else {
-                // Ensure the result is not negative
                 const max = Math.max(num1, num2);
                 const min = Math.min(num1, num2);
                 state.math.currentProblem = { num1: max, num2: min, operator: '-', answer: max - min };
@@ -403,13 +668,20 @@
         function checkMathAnswer() {
             const userAnswer = parseInt(document.getElementById('answer-input').value);
             const feedbackEl = document.getElementById('feedback-text');
+            if (isNaN(userAnswer)) {
+                feedbackEl.textContent = 'Please enter a number!';
+                feedbackEl.className = 'feedback incorrect';
+                return;
+            }
             if (userAnswer === state.math.currentProblem.answer) {
                 feedbackEl.textContent = 'Correct! 🎉';
                 feedbackEl.className = 'feedback correct';
+                speak('Correct!', 'en-US');
                 setTimeout(generateMathProblem, 1500);
             } else {
                 feedbackEl.textContent = 'Try again!';
                 feedbackEl.className = 'feedback incorrect';
+                speak('Try again!', 'en-US');
             }
         }
 
@@ -425,15 +697,24 @@
                 }, 1000);
             }, 2000);
 
+            // Setup all sections
             setupAlphabetSection('english');
             setupAlphabetSection('urdu');
             setupAlphabetSection('arabic');
+            setupPoemsSection();
             
-            updateAlphabetDisplay('english', 0);
-            updateAlphabetDisplay('urdu', 0);
-            updateAlphabetDisplay('arabic', 0);
+            // Set initial display for each section without auto-speaking
+            updateAlphabetDisplay('english', 0, false);
+            updateAlphabetDisplay('urdu', 0, false);
+            updateAlphabetDisplay('arabic', 0, false);
+            updatePoemDisplay(0, false);
             
             document.getElementById('check-answer-btn').onclick = checkMathAnswer;
+            document.getElementById('answer-input').addEventListener('keyup', function(event) {
+                if (event.key === "Enter") {
+                    checkMathAnswer();
+                }
+            });
         });
     </script>
 
