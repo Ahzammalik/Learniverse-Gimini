@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learniverse: Fun Learning for Kids</title>
+    
+    <!-- Google Fonts: Poppins & Baloo 2 for a playful look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==============================================
+        Branding & Theme
+        ============================================== */
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #F5A623;
+            --accent-color: #50E3C2;
+            --background-color: #F9F9F9;
+            --text-color: #333333;
+            --white-color: #FFFFFF;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --font-main: 'Poppins', sans-serif;
+            --font-display: 'Baloo 2', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow: hidden;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* ==============================================
+        Splash Screen
+        ============================================== */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .logo-container { animation: popIn 1s ease-out forwards; }
+        #splash-logo { width: 150px; height: 150px; }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .splash-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white-color);
+            margin-top: 20px;
+            animation: fadeIn 1.5s ease-in forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* ==============================================
+        Page Transitions
+        ============================================== */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95);
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+        }
+        .page.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* ==============================================
+        App Header (Used on multiple pages)
+        ============================================== */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            flex-shrink: 0;
+        }
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .header-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* ==============================================
+        Homepage
+        ============================================== */
+        .main-menu {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .menu-card {
+            background-color: var(--white-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .menu-card .icon { font-size: 3rem; margin-bottom: 15px; }
+        #english-card .icon { color: var(--primary-color); }
+        #urdu-card .icon { color: var(--secondary-color); }
+        #arabic-card .icon { color: var(--accent-color); }
+        #math-card .icon { color: #E94B3C; }
+        .menu-card h3 { font-size: 1.2rem; font-weight: 600; }
+        .menu-card p { font-size: 0.8rem; color: #777; }
+        .app-footer { text-align: center; padding-top: 20px; }
+        .reward-btn {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+        }
+
+        /* ==============================================
+        English Learning Section
+        ============================================== */
+        #english-section { background-color: #e3f2fd; }
+        .alphabet-display {
+            background: var(--white-color);
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .letter-image { font-size: 6rem; line-height: 1; }
+        .letter-text {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .word-text {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .letter-btn {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 10px 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .letter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-btn {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 15px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(245, 166, 35, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="logo-container">
+            <svg id="splash-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="#4A90E2"/>
+                <path d="M25,55 Q50,70 75,55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <circle cx="35" cy="45" r="5" fill="white"/>
+                <circle cx="65" cy="45" r="5" fill="white"/>
+                <path d="M20,40 L50,20 L80,40 L50,30 Z" fill="#333"/>
+                <rect x="48" y="12" width="4" height="8" fill="#F5A623"/>
+            </svg>
+        </div>
+        <h1 class="splash-text">Learniverse</h1>
+    </div>
+
+    <!-- Homepage -->
+    <main id="app-homepage" class="page">
+        <header class="app-header">
+            <h1 class="app-title">Welcome!</h1>
+            <button class="header-btn" onclick="playSound('click')" aria-label="Settings"><i class="fas fa-cog"></i></button>
+        </header>
+        <section class="main-menu">
+            <a href="#" id="english-card" class="menu-card" onclick="showPage('english-section')">
+                <div class="icon"><i class="fas fa-font"></i></div>
+                <h3>English ABC</h3><p>Learn letters & words</p>
+            </a>
+            <a href="#" id="urdu-card" class="menu-card" onclick="alert('Urdu section coming soon!')">
+                <div class="icon"><i class="fas fa-feather-alt"></i></div>
+                <h3>Urdu Qaida</h3><p>Explore Urdu alphabet</p>
+            </a>
+            <a href="#" id="arabic-card" class="menu-card" onclick="alert('Arabic section coming soon!')">
+                <div class="icon"><i class="fas fa-moon"></i></div>
+                <h3>Arabic Qaida</h3><p>Read the holy script</p>
+            </a>
+            <a href="#" id="math-card" class="menu-card" onclick="alert('Math section coming soon!')">
+                <div class="icon"><i class="fas fa-calculator"></i></div>
+                <h3>Math Puzzles</h3><p>Fun with numbers</p>
+            </a>
+        </section>
+        <footer class="app-footer">
+            <button class="reward-btn" onclick="playSound('click')"><i class="fas fa-star"></i> My Rewards</button>
+        </footer>
+    </main>
+
+    <!-- English Learning Section -->
+    <section id="english-section" class="page">
+        <header class="app-header">
+            <button class="header-btn" onclick="showPage('app-homepage')" aria-label="Back to home">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="app-title">English ABC</h1>
+            <button class="header-btn" onclick="playCurrentLetterSound()" aria-label="Play Sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </header>
+        
+        <div class="alphabet-display">
+            <div id="letter-image" class="letter-image">🍎</div>
+            <div id="letter-text" class="letter-text">Aa</div>
+            <div id="word-text" class="word-text">Apple</div>
+        </div>
+
+        <div id="alphabet-grid" class="alphabet-grid">
+            <!-- Letter buttons will be generated by JavaScript -->
+        </div>
+
+        <div class="nav-buttons">
+            <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev</button>
+            <button id="next-btn" class="nav-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <script>
+        // --- App State & Data ---
+        let currentPage = 'app-homepage';
+        let currentAlphabetIndex = 0;
+        const alphabetData = [
+            { letter: 'A', word: 'Apple', image: '🍎', sound: 'a_for_apple.mp3' },
+            { letter: 'B', word: 'Ball', image: '⚽', sound: 'b_for_ball.mp3' },
+            { letter: 'C', word: 'Cat', image: '🐱', sound: 'c_for_cat.mp3' },
+            { letter: 'D', word: 'Dog', image: '🐶', sound: 'd_for_dog.mp3' },
+            { letter: 'E', word: 'Elephant', image: '🐘', sound: 'e_for_elephant.mp3' },
+            { letter: 'F', word: 'Fish', image: '🐟', sound: 'f_for_fish.mp3' },
+            { letter: 'G', word: 'Goat', image: '🐐', sound: 'g_for_goat.mp3' },
+            { letter: 'H', word: 'Hat', image: '👒', sound: 'h_for_hat.mp3' },
+            { letter: 'I', word: 'Ice Cream', image: '🍦', sound: 'i_for_ice_cream.mp3' },
+            { letter: 'J', word: 'Juice', image: '🧃', sound: 'j_for_juice.mp3' },
+            { letter: 'K', word: 'Kite', image: '🪁', sound: 'k_for_kite.mp3' },
+            { letter: 'L', word: 'Lion', image: '🦁', sound: 'l_for_lion.mp3' },
+            { letter: 'M', word: 'Monkey', image: '🐵', sound: 'm_for_monkey.mp3' },
+            { letter: 'N', word: 'Nest', image: '🪺', sound: 'n_for_nest.mp3' },
+            { letter: 'O', word: 'Orange', image: '🍊', sound: 'o_for_orange.mp3' },
+            { letter: 'P', word: 'Panda', image: '🐼', sound: 'p_for_panda.mp3' },
+            { letter: 'Q', word: 'Queen', image: '👑', sound: 'q_for_queen.mp3' },
+            { letter: 'R', word: 'Rabbit', image: '🐰', sound: 'r_for_rabbit.mp3' },
+            { letter: 'S', word: 'Sun', image: '☀️', sound: 's_for_sun.mp3' },
+            { letter: 'T', word: 'Tiger', image: '🐯', sound: 't_for_tiger.mp3' },
+            { letter: 'U', word: 'Umbrella', image: '☂️', sound: 'u_for_umbrella.mp3' },
+            { letter: 'V', word: 'Violin', image: '🎻', sound: 'v_for_violin.mp3' },
+            { letter: 'W', word: 'Watch', image: '⌚', sound: 'w_for_watch.mp3' },
+            { letter: 'X', word: 'Xylophone', image: ' xylophone', sound: 'x_for_xylophone.mp3' },
+            { letter: 'Y', word: 'Yacht', image: '⛵', sound: 'y_for_yacht.mp3' },
+            { letter: 'Z', word: 'Zebra', image: '🦓', sound: 'z_for_zebra.mp3' },
+        ];
+
+        // --- Audio Context ---
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            if (type === 'click') {
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+            }
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+        
+        // --- Page Navigation ---
+        function showPage(pageId) {
+            playSound('click');
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('visible');
+            });
+            document.getElementById(pageId).classList.add('visible');
+            currentPage = pageId;
+        }
+
+        // --- English Section Logic ---
+        const letterImageEl = document.getElementById('letter-image');
+        const letterTextEl = document.getElementById('letter-text');
+        const wordTextEl = document.getElementById('word-text');
+        const alphabetGridEl = document.getElementById('alphabet-grid');
+
+        function updateAlphabetDisplay(index) {
+            const item = alphabetData[index];
+            letterImageEl.textContent = item.image;
+            letterTextEl.textContent = `${item.letter}${item.letter.toLowerCase()}`;
+            wordTextEl.textContent = item.word;
+            currentAlphabetIndex = index;
+
+            // Update active button in the grid
+            document.querySelectorAll('.letter-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        function playCurrentLetterSound() {
+            // Placeholder for female voice narration
+            const soundFile = alphabetData[currentAlphabetIndex].sound;
+            console.log(`Playing sound: ${soundFile}`);
+            // In a real app, you would use the Web Audio API to play the actual file.
+            alert(`Playing sound for "${alphabetData[currentAlphabetIndex].word}"`);
+        }
+
+        function generateAlphabetGrid() {
+            alphabetData.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-btn';
+                btn.textContent = item.letter;
+                btn.onclick = () => {
+                    playSound('click');
+                    updateAlphabetDisplay(index);
+                };
+                alphabetGridEl.appendChild(btn);
+            });
+        }
+
+        // --- App Initialization ---
+        window.addEventListener('load', () => {
+            const splashScreen = document.getElementById('splash-screen');
+
+            // --- AdMob Placeholder ---
+            console.log("AD_MOB: Preparing App Open Ad...");
+
+            setTimeout(() => {
+                splashScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    showPage('app-homepage');
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+            }, 3000);
+
+            // Initialize English Section
+            generateAlphabetGrid();
+            updateAlphabetDisplay(0);
+
+            // Event Listeners for Nav Buttons
+            document.getElementById('prev-btn').addEventListener('click', () => {
+                playSound('click');
+                const newIndex = (currentAlphabetIndex - 1 + alphabetData.length) % alphabetData.length;
+                updateAlphabetDisplay(newIndex);
+            });
+            document.getElementById('next-btn').addEventListener('click', () => {
+                playSound('click');
+                const newIndex = (currentAlphabetIndex + 1) % alphabetData.length;
+                updateAlphabetDisplay(newIndex);
+            });
+        });
+    </script>
+
+</body>
+</html>
