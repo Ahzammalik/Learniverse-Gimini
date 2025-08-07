@@ -2,6 +2,42 @@
 
 const LingoLeapData = {
     english: [
+        { letter: 'A', word: 'Apple', image: 'https://cdn.pixabay.com/photo/2014/12/21/23/39/apple-575773_1280.png', sound: '' },
+        { letter: 'B', word: 'Ball', image: 'https://cdn.pixabay.com/photo/2013/07/12/17/49/volleyball-152532_1280.png', sound: '' },
+        { letter: 'C', word: 'Cat', image: 'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.png', sound: '' },
+        // ... Add all 26 letters here
+        { letter: 'D', word: 'Duck', image: '', sound: '' },
+        { letter: 'E', word: 'Elephant', image: '', sound: '' },
+        { letter: 'F', word: 'Frog', image: '', sound: '' },
+        { letter: 'G', word: 'Grapes', image: '', sound: '' },
+        { letter: 'H', word: 'Hat', image: '', sound: '' },
+        { letter: 'I', word: 'Ice Cream', image: '', sound: '' },
+        { letter: 'J', word: 'Jug', image: '', sound: '' },
+        { letter: 'K', word: 'Kite', image: '', sound: '' },
+        { letter: 'L', word: 'Lion', image: '', sound: '' },
+        { letter: 'M', word: 'Monkey', image: '', sound: '' },
+        { letter: 'N', word: 'Nest', image: '', sound: '' },
+        { letter: 'O', word: 'Orange', image: '', sound: '' },
+        { letter: 'P', word: 'Pen', image: '', sound: '' },
+        { letter: 'Q', word: 'Queen', image: '', sound: '' },
+        { letter: 'R', word: 'Rabbit', image: '', sound: '' },
+        { letter: 'S', word: 'Sun', image: '', sound: '' },
+        { letter: 'T', word: 'Tree', image: '', sound: '' },
+        { letter: 'U', word: 'Umbrella', image: '', sound: '' },
+        { letter: 'V', word: 'Van', image: '', sound: '' },
+        { letter: 'W', word: 'Watch', image: '', sound: '' },
+        { letter: 'X', word: 'Xylophone', image: '', sound: '' },
+        { letter: 'Y', word: 'Yacht', image: '', sound: '' },
+        { letter: 'Z', word: 'Zebra', image: '', sound: '' },
+    ],
+    // math: [ ... ],
+    // urdu: [ ... ],
+};
+
+// js/data.js
+
+const LingoLeapData = {
+    english: [
         // Add paths to your actual audio files here
         { letter: 'A', word: 'Apple', image: 'https://cdn.pixabay.com/photo/2014/12/21/23/39/apple-575773_1280.png', sound: 'assets/audio/en/apple.mp3' },
         { letter: 'B', word: 'Ball', image: 'https://cdn.pixabay.com/photo/2013/07/12/17/49/volleyball-152532_1280.png', sound: 'assets/audio/en/ball.mp3' },
