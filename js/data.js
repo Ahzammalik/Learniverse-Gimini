@@ -25,3 +25,21 @@ const LingoLeapData = {
     ],
     math: [] // We will populate this in the next section
 };
+// In js/data.js
+
+function generateMathProblem(level) {
+    if (level <= 10) { // Ages 3-5: Simple Addition up to 10
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        return { type: 'addition', question: `${num1} + ${num2}`, answer: num1 + num2 };
+    } else if (level <= 20) { // Ages 6-8: Subtraction and slightly larger numbers
+        const num1 = Math.floor(Math.random() * 20) + 5;
+        const num2 = Math.floor(Math.random() * num1) + 1; // Ensure answer is not negative
+        return { type: 'subtraction', question: `${num1} - ${num2}`, answer: num1 - num2 };
+    } else { // Ages 9-12: More complex problems
+        const num1 = Math.floor(Math.random() * 50) + 10;
+        const num2 = Math.floor(Math.random() * 50) + 10;
+        return { type: 'addition', question: `${num1} + ${num2}`, answer: num1 + num2 };
+    }
+}
+// We don't need LingoLeapData.math anymore, as we generate problems on the fly.
