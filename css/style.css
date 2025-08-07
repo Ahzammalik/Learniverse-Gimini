@@ -1,0 +1,6 @@
+/* In css/style.css */
+.list-item { display: block; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 10px; text-decoration: none; color: var(--dark-text); font-weight: 600; }
+.poem-detail-view { text-align: center; }
+.poem-detail-view .author { color: var(--soft-grey); font-style: italic; margin-top: -10px; margin-bottom: 20px; }
+.poem-detail-view .poem-text { font-family: var(--font-body); white-space: pre-wrap; font-size: 1.1rem; line-height: 1.8; }
+.button-primary { display: inline-block; background: var(--primary-blue); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 20px; }
