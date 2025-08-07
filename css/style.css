@@ -1,3 +1,177 @@
+/* --- Global Variables and Resets --- */
+:root {
+    --primary-blue: #4A90E2;
+    --sunny-yellow: #F8E71C;
+    --leafy-green: #7ED321;
+    --warm-orange: #F5A623;
+    --clean-white: #FFFFFF;
+    --soft-grey: #BDBDBD;
+    --dark-text: #333333;
+    --font-headings: 'Baloo 2', cursive;
+    --font-body: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #F0F8FF;
+    color: var(--dark-text);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* --- Main App Container --- */
+#app {
+    width: 100vw;
+    height: 100vh;
+    max-width: 480px; /* Centered on larger screens */
+    margin: 0 auto;
+    background: var(--clean-white);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- View Structure --- */
+.view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.view-header {
+    background-color: var(--primary-blue);
+    color: var(--clean-white);
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.view-header h1 {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: var(--clean-white);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Home View (Dashboard) --- */
+.home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.module-card {
+    background-color: var(--clean-white);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 3px solid transparent;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.module-card .icon { font-size: 3rem; line-height: 1; }
+.module-card h2 { font-family: var(--font-headings); font-size: 1.2rem; margin-top: 10px; }
+
+#english { border-color: var(--leafy-green); color: var(--leafy-green); }
+#math { border-color: var(--warm-orange); color: var(--warm-orange); }
+#urdu { border-color: var(--primary-blue); color: var(--primary-blue); }
+#arabic { border-color: #8E44AD; color: #8E44AD; }
+
+.locked { filter: grayscale(1); position: relative; }
+.locked::after { content: '🔒'; position: absolute; top: 10px; right: 10px; font-size: 1.5rem; }
+
+/* --- English Module View --- */
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 15px;
+}
+
+.letter-card {
+    background: var(--leafy-green);
+    color: white;
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+.letter-card:hover { transform: scale(1.1); }
+
+/* --- Letter Detail View --- */
+.letter-detail-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.letter-detail-view img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.letter-detail-view h2 {
+    font-size: 6rem;
+    font-family: var(--font-headings);
+    color: var(--primary-blue);
+}
+
+.letter-detail-view p {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 /* In css/style.css */
 .list-item { display: block; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 10px; text-decoration: none; color: var(--dark-text); font-weight: 600; }
 .poem-detail-view { text-align: center; }
