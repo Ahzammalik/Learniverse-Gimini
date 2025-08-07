@@ -1,186 +1,118 @@
-/* --- Global Variables and Resets --- */
-:root {
-    --primary-blue: #4A90E2;
-    --sunny-yellow: #F8E71C;
-    --leafy-green: #7ED321;
-    --warm-orange: #F5A623;
-    --clean-white: #FFFFFF;
-    --soft-grey: #BDBDBD;
-    --dark-text: #333333;
-    --font-headings: 'Baloo 2', cursive;
-    --font-body: 'Nunito', sans-serif;
-}
+/* In css/style.css - Add these new styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-body);
-    background-color: #F0F8FF;
-    color: var(--dark-text);
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* --- Main App Container --- */
-#app {
-    width: 100vw;
-    height: 100vh;
-    max-width: 480px; /* Centered on larger screens */
-    margin: 0 auto;
-    background: var(--clean-white);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
+.home-view {
+    background: linear-gradient(to bottom, #87CEEB, #B2FFFF); /* Sky Gradient */
+    justify-content: flex-end;
+    position: relative;
     overflow: hidden;
-    position: relative;
 }
 
-/* --- View Structure --- */
-.view {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-.view-header {
-    background-color: var(--primary-blue);
-    color: var(--clean-white);
-    padding: 15px 20px;
-    text-align: center;
-    position: relative;
-    flex-shrink: 0;
-}
-
-.view-header h1 {
-    font-family: var(--font-headings);
-    font-size: 2rem;
-}
-
-.back-button {
+.home-header {
     position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.8rem;
-    color: var(--clean-white);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.view-content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.98); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* --- Home View (Dashboard) --- */
-.home-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.module-card {
-    background-color: var(--clean-white);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 10px;
+    top: 20px;
+    left: 0;
+    width: 100%;
     text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 3px solid transparent;
-}
-
-.module-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.module-card .icon { font-size: 3rem; line-height: 1; }
-.module-card h2 { font-family: var(--font-headings); font-size: 1.2rem; margin-top: 10px; }
-
-#english { border-color: var(--leafy-green); color: var(--leafy-green); }
-#math { border-color: var(--warm-orange); color: var(--warm-orange); }
-#urdu { border-color: var(--primary-blue); color: var(--primary-blue); }
-#arabic { border-color: #8E44AD; color: #8E44AD; }
-
-.locked { filter: grayscale(1); position: relative; }
-.locked::after { content: '🔒'; position: absolute; top: 10px; right: 10px; font-size: 1.5rem; }
-
-/* --- English Module View --- */
-.alphabet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 15px;
-}
-
-.letter-card {
-    background: var(--leafy-green);
     color: white;
+    z-index: 10;
+}
+
+.home-header h1 {
     font-family: var(--font-headings);
     font-size: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    text-decoration: none;
-}
-.letter-card:hover { transform: scale(1.1); }
-
-/* --- Letter Detail View --- */
-.letter-detail-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-.letter-detail-view img {
-    max-width: 70%;
-    height: auto;
-    border-radius: 20px;
-}
-
-.letter-detail-view h2 {
-    font-size: 6rem;
-    font-family: var(--font-headings);
-    color: var(--primary-blue);
-}
-
-.letter-detail-view p {
-    font-size: 2rem;
+.home-header p {
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
-/* In css/style.css */
-.list-item { display: block; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 10px; text-decoration: none; color: var(--dark-text); font-weight: 600; }
-.poem-detail-view { text-align: center; }
-.poem-detail-view .author { color: var(--soft-grey); font-style: italic; margin-top: -10px; margin-bottom: 20px; }
-.poem-detail-view .poem-text { font-family: var(--font-body); white-space: pre-wrap; font-size: 1.1rem; line-height: 1.8; }
-.button-primary { display: inline-block; background: var(--primary-blue); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 20px; }
-/* In css/style.css */
-.math-view { text-align: center; }
-#math-problem-box { font-size: 4rem; font-family: var(--font-headings); margin: 40px 0; }
-.math-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.math-option { background: var(--warm-orange); color: white; font-size: 2rem; border: none; border-radius: 15px; padding: 25px; cursor: pointer; }
-#math-feedback { font-size: 1.5rem; font-weight: bold; margin-top: 30px; height: 30px; }
+.landscape-container {
+    width: 100%;
+    height: 70%;
+    position: relative;
+}
+
+.sky {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -30%;
+}
+
+.sun {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #FFD700;
+}
+
+.cloud {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    background: white;
+    border-radius: 20px;
+    opacity: 0.9;
+    animation: drift 25s linear infinite;
+}
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+.cloud::before { width: 50px; height: 50px; top: -25px; left: 15px; }
+.cloud::after { width: 60px; height: 60px; top: -20px; left: 35px; }
+.cloud1 { top: 40%; left: -100px; }
+.cloud2 { top: 20%; left: -150px; animation-delay: -10s; animation-duration: 35s; }
+
+@keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(600px); }
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #90EE90; /* Light Green */
+    border-top-left-radius: 100% 200px;
+    border-top-right-radius: 100% 200px;
+}
+
+.landscape-button {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark-text);
+    font-family: var(--font-headings);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.landscape-button:hover {
+    transform: scale(1.1);
+}
+
+.landscape-button img {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2));
+    margin-bottom: 5px;
+}
+
+#home-english { bottom: 35%; left: 10%; }
+#home-math { bottom: 45%; left: 45%; }
+#home-math img { width: 100px; height: 100px; } /* Mountain is bigger */
+#home-urdu { bottom: 25%; right: 12%; }
+#home-poems { bottom: 10%; left: 35%; }
