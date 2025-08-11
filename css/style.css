@@ -162,3 +162,20 @@ body {
 .settings-view span { font-size: 1.1rem; font-weight: 600; }
 .settings-toggle { font-size: 1rem; padding: 8px 20px; border-radius: 20px; border: none; cursor: pointer; background: var(--primary-blue); color: white; }
 .button-danger { background: #E74C3C; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; }
+/* In css/style.css */
+/* REMOVE the old ".landscape-button img" style and ADD this one */
+
+.landscape-button svg {
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2));
+    margin-bottom: 5px;
+}
+
+/* UPDATE the specific button positions to look better */
+#home-english { bottom: 35%; left: 8%; }
+#home-math { bottom: 50%; left: 42%; }
+#home-math svg { width: 110px; height: 110px; } /* Mountain is bigger */
+#home-urdu { bottom: 40%; right: 8%; }
+#home-poems { bottom: 15%; left: 20%; }
+#home-arabic { bottom: 12%; right: 20%; }
