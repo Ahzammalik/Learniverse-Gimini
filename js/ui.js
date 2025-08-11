@@ -45,3 +45,59 @@ renderHome() {
         </div>
     `;
 },
+// In js/ui.js
+
+// --- English Letter Detail View ---
+// Find the renderEnglishLetterDetail function and modify it.
+renderEnglishLetterDetail(letter) {
+    const item = LingoLeapData.english.find(d => d.letter === letter);
+    if (!item) return `<div>Letter not found!</div>`;
+    AppState.markAsLearned('english', item.letter);
+    SpeechManager.speak(item.phrase, 'en-US'); // Speak immediately on view
+    return `
+        <div class="view">
+            <div class="view-header"><a href="#/english" class="back-button">‹</a><h1>${item.word}</h1></div>
+            <div class="view-content letter-detail-view">
+                <h2>${item.letter}</h2>
+                <img src="${item.image}" alt="${item.word}">
+                <p>${item.word}</p>
+                <button onclick="SpeechManager.speak('${item.phrase}', 'en-US')" class="button-primary">Speak Again 🔊</button>
+            </div>
+        </div>
+    `;
+},
+
+// --- Urdu Module View ---
+// Find the renderUrduModule function and modify the lettersHTML line.
+renderUrduModule() {
+    const lettersHTML = LingoLeapData.urdu.map(item => {
+        const isLearnedClass = AppState.isLearned('urdu', item.letter) ? 'learned' : '';
+        return `<div class="letter-card urdu ${isLearnedClass}" onclick="SpeechManager.speak('${item.name}', 'ur-PK'); AppState.markAsLearned('urdu', '${item.letter}'); this.classList.add('learned');">${item.letter}</div>`;
+    }).join('');
+    return `<div class="view"><div class="view-header"><a href="#/" class="back-button">‹</a><h1>Urdu Huroof</h1></div><div class="view-content"><div class="alphabet-grid urdu-grid">${lettersHTML}</div></div></div>`;
+},
+
+// --- Arabic Module View ---
+// Find the renderArabicModule function and modify the lettersHTML line.
+renderArabicModule() {
+    const lettersHTML = LingoLeapData.arabic.map(item => {
+        const isLearnedClass = AppState.isLearned('arabic', item.letter) ? 'learned' : '';
+        return `<div class="letter-card arabic ${isLearnedClass}" onclick="SpeechManager.speak('${item.name}', 'ar-SA'); AppState.markAsLearned('arabic', '${item.letter}'); this.classList.add('learned');">${item.letter}</div>`;
+    }).join('');
+    return `<div class="view"><div class="view-header"><a href="#/" class="back-button">‹</a><h1>Arabic Alphabets</h1></div><div class="view-content"><div class="alphabet-grid arabic-grid">${lettersHTML}</div></div></div>`;
+},
+
+// --- Settings View ---
+// Find renderSettingsView and replace the toggleSfx function call
+renderSettingsView() {
+    // ...
+    // Change the Sound Effects & Voice button
+    <button class="settings-toggle" onclick="toggleSfx(this)">${SpeechManager.isSfxEnabled ? 'ON' : 'OFF'}</button>
+    // ...
+},
+
+// And update the helper function
+function toggleSfx(button) {
+    const isEnabled = SpeechManager.toggleSfx();
+    button.textContent = isEnabled ? 'ON' : 'OFF';
+}
