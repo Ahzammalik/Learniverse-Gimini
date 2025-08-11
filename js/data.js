@@ -105,3 +105,55 @@ function generateMathProblem(level) {
         return { type: 'addition', question: `${num1} + ${num2}`, answer: num1 + num2 };
     }
 }
+// js/data.js
+
+const LingoLeapData = {
+    english: [
+        { letter: 'A', word: 'Apple', image: 'https://www.svgrepo.com/show/443733/apple-tree.svg', phrase: 'A, for Apple' },
+        { letter: 'B', word: 'Ball', image: 'https://www.svgrepo.com/show/493489/ball.svg', phrase: 'B, for Ball' },
+        { letter: 'C', word: 'Cat', image: 'https://www.svgrepo.com/show/485324/cat.svg', phrase: 'C, for Cat' },
+        { letter: 'D', word: 'Duck', image: 'https://www.svgrepo.com/show/475659/duck.svg', phrase: 'D, for Duck' },
+        { letter: 'E', word: 'Elephant', image: 'https://www.svgrepo.com/show/459267/elephant.svg', phrase: 'E, for Elephant' },
+        { letter: 'F', word: 'Frog', image: 'https://www.svgrepo.com/show/490409/frog.svg', phrase: 'F, for Frog' },
+        { letter: 'G', word: 'Grapes', image: 'https://www.svgrepo.com/show/493822/grapes.svg', phrase: 'G, for Grapes' },
+        { letter: 'H', word: 'Hat', image: 'https://www.svgrepo.com/show/494027/hat.svg', phrase: 'H, for Hat' },
+        { letter: 'I', word: 'Ice Cream', image: 'https://www.svgrepo.com/show/486242/ice-cream.svg', phrase: 'I, for Ice Cream' },
+        { letter: 'J', word: 'Jug', image: 'https://www.svgrepo.com/show/494301/jug.svg', phrase: 'J, for Jug' },
+        { letter: 'K', word: 'Kite', image: 'https://www.svgrepo.com/show/494334/kite.svg', phrase: 'K, for Kite' },
+        { letter: 'L', word: 'Lion', image: 'https://www.svgrepo.com/show/458872/lion.svg', phrase: 'L, for Lion' },
+        { letter: 'M', word: 'Monkey', image: 'https://www.svgrepo.com/show/475438/monkey.svg', phrase: 'M, for Monkey' },
+        { letter: 'N', word: 'Nest', image: 'https://www.svgrepo.com/show/465133/nest.svg', phrase: 'N, for Nest' },
+        { letter: 'O', word: 'Orange', image: 'https://www.svgrepo.com/show/494808/orange.svg', phrase: 'O, for Orange' },
+        { letter: 'P', word: 'Pen', image: 'https://www.svgrepo.com/show/494910/pen.svg', phrase: 'P, for Pen' },
+        { letter: 'Q', word: 'Queen', image: 'https://www.svgrepo.com/show/462477/queen.svg', phrase: 'Q, for Queen' },
+        { letter: 'R', word: 'Rabbit', image: 'https://www.svgrepo.com/show/475446/rabbit.svg', phrase: 'R, for Rabbit' },
+        { letter: 'S', word: 'Sun', image: 'https://www.svgrepo.com/show/495398/sun.svg', phrase: 'S, for Sun' },
+        { letter: 'T', word: 'Tree', image: 'https://www.svgrepo.com/show/495574/tree.svg', phrase: 'T, for Tree' },
+        { letter: 'U', word: 'Umbrella', image: 'https://www.svgrepo.com/show/495638/umbrella.svg', phrase: 'U, for Umbrella' },
+        { letter: 'V', word: 'Van', image: 'https://www.svgrepo.com/show/495690/van.svg', phrase: 'V, for Van' },
+        { letter: 'W', word: 'Watch', image: 'https://www.svgrepo.com/show/495764/watch.svg', phrase: 'W, for Watch' },
+        { letter: 'X', word: 'Xylophone', image: 'https://www.svgrepo.com/show/495837/xylophone.svg', phrase: 'X, for Xylophone' },
+        { letter: 'Y', word: 'Yacht', image: 'https://www.svgrepo.com/show/495841/yacht.svg', phrase: 'Y, for Yacht' },
+        { letter: 'Z', word: 'Zebra', image: 'https://www.svgrepo.com/show/475478/zebra.svg', phrase: 'Z, for Zebra' },
+    ],
+    urdu: [
+        { letter: 'ا', name: 'Alif' }, { letter: 'ب', name: 'Bay' }, { letter: 'پ', name: 'Pay' }, { letter: 'ت', name: 'Tay' }, { letter: 'ٹ', name: 'Tey' }, 
+        { letter: 'ث', name: 'Say' }, { letter: 'ج', name: 'Jeem' }, { letter: 'چ', name: 'Chay' }, { letter: 'ح', name: 'Hay' }, { letter: 'خ', name: 'Khay' },
+        { letter: 'د', name: 'Daal' }, { letter: 'ڈ', name: 'Ddaal' }, { letter: 'ذ', name: 'Zaal' }, { letter: 'ر', name: 'Ray' }, { letter: 'ڑ', name: 'Rray' },
+        { letter: 'ز', name: 'Zay' }, { letter: 'ژ', name: 'Zhay' }, { letter: 'س', name: 'Seen' }, { letter: 'ش', name: 'Sheen' }, { letter: 'ص', name: 'Suaad' },
+        { letter: 'ض', name: 'Zuaad' }, { letter: 'ط', name: 'Toay' }, { letter: 'ظ', name: 'Zoay' }, { letter: 'ع', name: 'Ain' }, { letter: 'غ', name: 'Ghain' },
+        { letter: 'ف', name: 'Fay' }, { letter: 'ق', name: 'Qaaf' }, { letter: 'ک', name: 'Kaaf' }, { letter: 'گ', name: 'Gaaf' }, { letter: 'ل', name: 'Laam' },
+        { letter: 'م', name: 'Meem' }, { letter: 'ن', 'name': 'Noon' }, { letter: 'و', name: 'Wao' }, { letter: 'ہ', name: 'Gol Hay' },
+        { letter: 'ی', name: 'Yay' }, { letter: 'ے', name: 'Bari Yay' },
+    ],
+    arabic: [
+        { letter: 'ا', name: 'Alif' }, { letter: 'ب', name: 'Ba' }, { letter: 'ت', name: 'Ta' }, { letter: 'ث', name: 'Tha' }, { letter: 'ج', name: 'Jim' },
+        { letter: 'ح', name: 'Ha' }, { letter: 'خ', name: 'Kha' }, { letter: 'د', name: 'Dal' }, { letter: 'ذ', name: 'Dhal' }, { letter: 'ر', name: 'Ra' },
+        { letter: 'ز', name: 'Zayn' }, { letter: 'س', name: 'Sin' }, { letter: 'ش', name: 'Shin' }, { letter: 'ص', name: 'Sad' }, { letter: 'ض', name: 'Dad' },
+        { letter: 'ط', name: 'Ta' }, { letter: 'ظ', name: 'Dha' }, { letter: 'ع', name: 'Ayn' }, { letter: 'غ', name: 'Ghayn' }, { letter: 'ف', name: 'Fa' },
+        { letter: 'ق', name: 'Qaf' }, { letter: 'ك', name: 'Kaf' }, { letter: 'ل', name: 'Lam' }, { letter: 'م', name: 'Mim' }, { letter: 'ن', name: 'Nun' },
+        { letter: 'ه', name: 'Ha' }, { letter: 'و', name: 'Waw' }, { letter: 'ي', name: 'Ya' },
+    ],
+    poems: [ /* ... The 20 poems data remains the same ... */ ]
+};
+// The generateMathProblem function remains the same.
